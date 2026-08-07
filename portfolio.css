@@ -1,0 +1,727 @@
+/* ============================================================
+   PORTFÓLIO — DAVID CAPULOT CORRÊA
+   Tema: DRAGÃO DE FERRO E BRASA
+   Preto profundo · Vermelho brasa · Dourado envelhecido · Aço
+   100% autoral — sem fontes, ícones ou scripts de terceiros.
+============================================================ */
+
+/* ==============================
+   VARIÁVEIS
+   ============================== */
+:root {
+  /* Fundo */
+  --obsidian:     #08070a;   /* fundo geral, preto quente */
+  --iron:         #5c1712;   /* painel de seção */
+  --iron-light:   #1c1a24;   /* card / superfície elevada */
+  --iron-hover:   #1c1a24;
+
+  /* Paleta de marca — dragão */
+  --ember-dark:   #5c1712;   /* vermelho profundo, estrutural */
+  --ember:        #a92a1f;   /* vermelho principal */
+  --ember-bright: #d9432c;   /* brasa acesa — hover / destaque */
+  --gold:         #ad8a3d;   /* dourado envelhecido, bordas */
+  --gold-bright:  #e6c667;   /* dourado claro — brilho, texto de destaque */
+
+  --bone:         #e6c667;   /* texto principal, marfim */
+  --smoke:        #9a94a3;   /* texto secundário */
+
+  --scale-glow: 0 0 10px rgba(169,42,31,0.45), 0 0 26px rgba(173,138,61,0.18);
+  --ember-shadow: 0 10px 28px rgba(0,0,0,0.55);
+
+  /* Tipografia — só fontes do sistema, nada externo */
+  --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Courier New', Consolas, monospace;
+}
+
+/* ==============================
+   RESET
+   ============================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--obsidian);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(169,42,31,0.16), transparent 60%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0 1px, transparent 1px 16px),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.015) 0 1px, transparent 1px 16px);
+  color: var(--bone);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ==============================
+   SEÇÕES E ANIMAÇÕES
+   ============================== */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+  background-color: var(--iron);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%);
+  border: 1px solid rgba(173,138,61,0.18);
+  border-radius: 4px;
+  padding: clamp(1.25rem, 5vw, 2.25rem);
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* filete dourado no topo de cada seção — como uma placa gravada */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-bright) 50%, var(--gold) 80%, transparent);
+  opacity: 0.7;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes emberPulse {
+  from { box-shadow: 0 0 8px rgba(169,42,31,0.45), 0 0 0 1px var(--gold); }
+  to   { box-shadow: 0 0 22px rgba(217,67,44,0.65), 0 0 0 1px var(--gold-bright); }
+}
+
+/* ==============================
+   HEADERS
+   ============================== */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 5vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--bone);
+  text-shadow: 0 0 18px rgba(217,67,44,0.4);
+}
+
+h2, h3 {
+  font-family: var(--font-display);
+  color: var(--gold-bright);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 46px; height: 2px;
+  background: linear-gradient(90deg, var(--ember-bright), var(--gold));
+}
+
+header {
+  padding: 4.5rem 1rem 3rem;
+  background:
+    radial-gradient(ellipse 700px 300px at 50% 0%, rgba(217,67,44,0.22), transparent 65%),
+    linear-gradient(180deg, var(--ember-dark), #2a0c0a 70%, var(--obsidian));
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid var(--gold);
+  overflow: hidden;
+}
+
+/* Emblema do dragão — SVG autoral embutido, sem dependência externa */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 108px;
+  height: 108px;
+  opacity: 0.95;
+  background-image: url("./site-foto/cyber.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  filter: drop-shadow(0 0 10px rgba(217,67,44,0.55));
+}
+
+header .header-container,
+header p {
+  position: relative;
+  z-index: 1;
+  margin-top: 4.5rem;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+header p {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  color: var(--smoke);
+}
+
+.social-header {
+  position: absolute;
+  right: 1rem;
+  top: 4.5rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.social-header img {
+  width: 18px;
+  height: 18px;
+  filter: grayscale(60%) sepia(45%) hue-rotate(-8deg) saturate(2.2) brightness(0.95);
+  transition: transform 0.25s, filter 0.25s;
+}
+
+.social-header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--iron-light);
+  border: 1px solid var(--gold);
+  transition: 0.25s;
+}
+
+.social-header a:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold-bright);
+  background: var(--iron-hover);
+}
+.social-header a:hover img { filter: none; }
+
+.subtitulo {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 3vw, 0.95rem);
+  color: var(--gold);
+  opacity: 0.9;
+  margin: 1rem 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==============================
+   MAIN CONTAINER
+   ============================== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sobre-container {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.sobre-texto { flex: 1; }
+.sobre-texto p { margin-bottom: 0.9rem; color: var(--bone); }
+.sobre-texto p:last-child { margin-bottom: 0; }
+
+.img-centralizada {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  object-position: center 20%;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 3px solid var(--gold);
+  outline: 1px solid rgba(0,0,0,0.4);
+  outline-offset: 4px;
+  box-shadow: var(--ember-shadow), 0 0 0 1px var(--ember-dark);
+  animation: emberPulse 2.2s ease-in-out infinite alternate;
+}
+
+/* ==============================
+   ITENS DE FORMAÇÃO / EXPERIÊNCIA
+   ============================== */
+.item-formacao, .item-experiencia {
+  display: block;
+  text-decoration: none;
+  color: var(--bone);
+  /* Mudei de gradiente para cor cinza sólida */
+  background: var(--iron-light); 
+  border: 1px solid rgba(173,138,61,0.25);
+  border-left: 3px solid var(--ember); /* Borda lateral vermelha mantida */
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  cursor: pointer;
+}
+
+.item-formacao:hover, .item-experiencia:hover {
+  transform: translateX(4px);
+  box-shadow: var(--scale-glow);
+  border-left-color: var(--gold-bright);
+  /* Mudei o hover para o cinza do hover */
+  background: var(--iron-hover); 
+}
+
+.info-formacao, .info-experiencia {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.6rem 0;
+}
+
+.info-formacao img, .info-experiencia img {
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--gold);
+  filter: grayscale(35%) sepia(20%) saturate(1.3);
+}
+
+.item-formacao span.mono,
+.item-formacao > span,
+.item-experiencia > span {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--smoke);
+}
+
+/* ==============================
+   STATUS COLORS
+   ============================== */
+.status-amarelo { color: var(--gold-bright) !important; font-weight: bold; }
+.status-verde   { color: #7fbf6a !important; font-weight: bold; }
+
+/* ==============================
+   BOTOES
+   ============================== */
+.botoes-curriculo {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.btn-curriculo {
+  padding: 0.9rem 1.8rem;
+  background: var(--iron-light);
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  transition: 0.25s;
+}
+
+.btn-curriculo:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--scale-glow);
+  background: linear-gradient(135deg, var(--ember), var(--ember-bright));
+  color: var(--obsidian);
+  border-color: var(--gold-bright);
+}
+
+/* ==============================
+   LISTAS DE HABILIDADES
+   ============================== */
+.lista-com-icone {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8rem;
+  list-style: none;
+}
+
+.lista-com-icone li a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--iron-light);
+  border: 1px solid rgba(173,138,61,0.2);
+  border-radius: 4px;
+  color: var(--bone);
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.lista-com-icone li a:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold);
+  background: var(--iron-hover);
+}
+
+.lista-com-icone li img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: grayscale(45%) sepia(25%) saturate(1.4) brightness(0.95);
+}
+
+.emoji-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  width: 22px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ==============================
+   CERTIFICADOS (placeholder sem imagem)
+   ============================== */
+.cert-placeholder {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  background: linear-gradient(160deg, var(--iron-hover), var(--iron-light));
+  border: 1px dashed var(--gold);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+/* ==============================
+   ATUALMENTE ESTUDANDO
+   ============================== */
+.lista-estudando {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.item-estudando {
+  padding: 0.7rem 1.2rem;
+  background: var(--iron-light);
+  border: 1px solid rgba(173,138,61,0.25);
+  border-radius: 30px;
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.item-estudando:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold);
+}
+
+/*/* ==============================
+   CARROSSEL DE PROJETOS
+   ============================== */
+.carrossel-projetos, .carrossel-cursos, .carrossel-certificados {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.lista-projetos, .lista-cursos, .lista-certificados {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem;
+  flex: 1;
+}
+
+.lista-projetos::-webkit-scrollbar,
+.lista-cursos::-webkit-scrollbar,
+.lista-certificados::-webkit-scrollbar { display: none; }
+
+.card-projeto {
+  flex: 0 0 320px;
+  background: var(--iron-light); /* Fundo 100% cinza sólido */
+  border: 1px solid rgba(173,138,61,0.25);
+  border-radius: 6px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: 0.3s;
+}
+
+.card-projeto:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold);
+  background: var(--iron-hover); /* Cinza ligeiramente mais claro no hover */
+}
+
+.card-projeto img { width: 100%; height: 160px; object-fit: cover; display: block; }
+.card-projeto h3, .card-projeto p, .card-projeto span { padding: 0.5rem 1rem; color: var(--bone); }
+.card-projeto span { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold); }
+
+/* ==============================
+   CARROSSEL DE CURSOS E CERTIFICADOS
+   ============================== */
+.card-curso {
+  flex: 0 0 300px;
+  background: var(--iron-light); /* Fundo 100% cinza sólido */
+  border: 1px solid rgba(173,138,61,0.25);
+  border-radius: 6px;
+  padding: 1rem;
+  transition: 0.3s;
+  scroll-snap-align: start;
+  text-decoration: none;
+  display: block;
+}
+
+.card-curso:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold);
+  background: var(--iron-hover); /* Cinza ligeiramente mais claro no hover */
+}
+
+.card-curso img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  filter: grayscale(30%) sepia(15%);
+}
+
+.card-curso h3, .card-curso p, .card-curso span { color: var(--bone); }
+.card-curso span { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold); }
+
+/* Botões de scroll */
+.btn-scroll {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: var(--iron-light);
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: 0.25s;
+}
+
+.btn-scroll:hover {
+  background: linear-gradient(135deg, var(--ember), var(--ember-bright));
+  color: var(--obsidian);
+  border-color: var(--gold-bright);
+  box-shadow: var(--scale-glow);
+}
+
+.btn-scroll.esquerda { left: -8px; }
+.btn-scroll.direita { right: -8px; }
+
+/* ==============================
+   MENU LATERAL
+   ============================== */
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--iron-light);
+  color: var(--gold-bright);
+  border: 1px solid var(--gold);
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 1000;
+  transition: 0.25s;
+}
+.menu-btn:hover {
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold-bright);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--iron), var(--obsidian));
+  border-right: 1px solid var(--gold);
+  padding-top: 70px;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.sidebar a {
+  display: block;
+  color: var(--bone);
+  padding: 15px 20px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  border-left: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  background: rgba(169,42,31,0.15);
+  border-left-color: var(--ember-bright);
+  color: var(--gold-bright);
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+footer {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(180deg, var(--obsidian), #5c1712);
+  border-top: 2px solid var(--gold);
+  color: var(--smoke);
+}
+
+footer h2 { color: var(--gold-bright); }
+
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  margin-top: 1.2rem;
+}
+
+.redes-sociais a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--iron-light);
+  border: 1px solid var(--gold);
+  transition: 0.25s;
+}
+
+.redes-sociais img {
+  width: 20px;
+  height: 20px;
+  filter: grayscale(60%) sepia(45%) hue-rotate(-8deg) saturate(2.2) brightness(0.95);
+  transition: 0.25s;
+}
+
+.redes-sociais a:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--scale-glow);
+  border-color: var(--gold-bright);
+  background: var(--iron-hover);
+}
+.redes-sociais a:hover img { filter: none; }
+
+footer p { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.85rem; }
+
+/* ==============================
+   BOTÕES DE VER/BAIXAR (certificados) E DEMO/CÓDIGO (projetos)
+   ============================== */
+.botoes-cert {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.btn-cert {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 0.6rem;
+  background: var(--iron-hover);
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.btn-cert:hover {
+  background: linear-gradient(135deg, var(--ember), var(--ember-bright));
+  color: var(--obsidian);
+  border-color: var(--gold-bright);
+  box-shadow: var(--scale-glow);
+}
+
+.btn-cert-desabilitado {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-curriculo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-btn {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+
+/* ==============================
+   RESPONSIVIDADE
+   ============================== */
+@media (max-width: 768px) {
+  header::before { top: 0.5rem; width: 84px; height: 84px; }
+  header .header-container, header p { margin-top: 3.6rem; }
+  .header-container { flex-direction: column; }
+  .social-header { position: static; margin-top: 1.2rem; }
+  .sobre-container { flex-direction: column; text-align: center; }
+  .img-centralizada { width: 220px; height: 220px; }
+  .lista-com-icone { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.6rem; }
+  .card-projeto { flex: 0 0 85%; }
+  .card-curso { flex: 0 0 85%; }
+}
