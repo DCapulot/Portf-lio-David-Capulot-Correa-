@@ -40,6 +40,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* Segurança responsiva: nenhuma imagem estoura a largura do contêiner.
+   Exceções (ex: .img-centralizada, .card-projeto img) sobrescrevem abaixo. */
+img { max-width: 100%; height: auto; display: block; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -148,6 +152,9 @@ header {
   overflow: hidden;
 }
 
+/* Emblema do dragão — SVG autoral embutido, sem dependência externa */
+
+
 header .header-container,
 header p {
   position: relative;
@@ -172,11 +179,11 @@ header p {
 }
 
 .social-header {
-  position: absolute;
-  right: 1rem;
-  top: 4.5rem;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.7rem;
+  margin-top: 1.2rem;
 }
 
 .social-header img {
@@ -699,10 +706,35 @@ footer p { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.85rem; 
   header::before { top: 0.5rem; width: 84px; height: 84px; }
   header .header-container, header p { margin-top: 3.6rem; }
   .header-container { flex-direction: column; }
-  .social-header { position: static; margin-top: 1.2rem; }
   .sobre-container { flex-direction: column; text-align: center; }
   .img-centralizada { width: 220px; height: 220px; }
   .lista-com-icone { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.6rem; }
   .card-projeto { flex: 0 0 85%; }
   .card-curso { flex: 0 0 85%; }
+}
+
+/* ==============================
+   RESPONSIVIDADE — CELULARES PEQUENOS
+   ============================== */
+@media (max-width: 480px) {
+  main { padding: 1.5rem 0.75rem; }
+  section { padding: 1rem 1.1rem; }
+
+  .titulo h1 { font-size: 1.4rem; }
+  header { padding: 3.5rem 0.75rem 2rem; }
+
+  .img-centralizada { width: 160px; height: 160px; }
+
+  .botoes-curriculo { flex-direction: column; align-items: stretch; }
+  .btn-curriculo { justify-content: center; }
+
+  .card-projeto, .card-curso { flex: 0 0 92%; }
+
+  .info-formacao, .info-experiencia { flex-wrap: wrap; }
+
+  .lista-estudando { justify-content: center; }
+
+  .btn-scroll { width: 34px; height: 34px; font-size: 1rem; }
+  .btn-scroll.esquerda { left: -4px; }
+  .btn-scroll.direita { right: -4px; }
 }
