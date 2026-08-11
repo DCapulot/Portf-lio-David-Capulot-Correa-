@@ -12,7 +12,7 @@ Este projeto foi desenvolvido para apresentar minha trajetória acadêmica, habi
 
 ## 🚀 Demonstração
 
-🔗 https://david-capulot-correa.github.io/
+🔗 https://david-capulot-correa.github.io/Portf-lio-David-Capulot-Correa-/
 
 ---
 
