@@ -148,25 +148,6 @@ header {
   overflow: hidden;
 }
 
-/* Emblema do dragão — SVG autoral embutido, sem dependência externa */
-header::before {
-  content: "";
-  position: absolute;
-  top: 0.6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 108px;
-  height: 108px;
-  opacity: 0.95;
-  background-image: url("./site-foto/cyber.jpeg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border-radius: 50%;
-  border: 2px solid var(--gold);
-  filter: drop-shadow(0 0 10px rgba(217,67,44,0.55));
-}
-
 header .header-container,
 header p {
   position: relative;
