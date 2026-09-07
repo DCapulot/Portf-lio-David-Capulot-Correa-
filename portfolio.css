@@ -200,7 +200,7 @@ header p {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: var(--iron-light);
+  background: #ffffff;
   border: 1px solid var(--gold);
   transition: 0.25s;
 }
@@ -209,7 +209,7 @@ header p {
   transform: translateY(-3px);
   box-shadow: var(--scale-glow);
   border-color: var(--gold-bright);
-  background: var(--iron-hover);
+  background: #ffffff;
 }
 .social-header a:hover img { filter: none; }
 
@@ -370,7 +370,7 @@ main {
   gap: 0.7rem;
   padding: 0.6rem 0.9rem;
   background: var(--iron-light);
-  border: 1px solid rgba(173,138,61,0.2);
+  border: 1px solid rgba(230, 224, 214, 0.2);
   border-radius: 4px;
   color: var(--bone);
   text-decoration: none;
@@ -385,8 +385,8 @@ main {
 }
 
 .lista-com-icone li img {
-  width: 22px;
-  height: 22px;
+  width: 3rem;
+  height: 3rem;
   object-fit: contain;
   filter: grayscale(45%) sepia(25%) saturate(1.4) brightness(0.95);
 }
@@ -424,19 +424,37 @@ main {
   gap: 0.9rem;
 }
 
+/* ==============================
+   ATUALMENTE ESTUDANDO (REM)
+   ============================== */
+.lista-estudando {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem; /* 14.4px */
+}
+
 .item-estudando {
-  padding: 0.7rem 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem; /* 9.6px */
+  padding: 0.6rem 1.2rem; /* 9.6px 19.2px */
   background: var(--iron-light);
-  border: 1px solid rgba(173,138,61,0.25);
-  border-radius: 30px;
+  border: 0.0625rem solid rgba(173, 138, 61, 0.25); /* 1px */
+  border-radius: 1.875rem; /* 30px */
   color: var(--bone);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.95rem; /* 15.2px */
   transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
 
+.item-estudando img {
+  width: 2rem; /* 20px */
+  height: 2rem; /* 20px */
+  object-fit: contain;
+}
+
 .item-estudando:hover {
-  transform: translateY(-3px);
+  transform: translateY(-0.1875rem); /* -3px */
   box-shadow: var(--scale-glow);
   border-color: var(--gold);
 }
@@ -627,7 +645,7 @@ footer h2 { color: var(--gold-bright); }
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--iron-light);
+  background: #ffffff;
   border: 1px solid var(--gold);
   transition: 0.25s;
 }
@@ -643,7 +661,7 @@ footer h2 { color: var(--gold-bright); }
   transform: translateY(-3px);
   box-shadow: var(--scale-glow);
   border-color: var(--gold-bright);
-  background: var(--iron-hover);
+  background: #ffffff;
 }
 .redes-sociais a:hover img { filter: none; }
 
