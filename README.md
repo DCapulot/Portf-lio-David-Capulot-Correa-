@@ -153,7 +153,7 @@ O portfólio reúne certificados obtidos em diversas plataformas e eventos, incl
 **David Capulot Corrêa**
 
 GitHub:
-https://github.com/David-Capulot-Correa
+https://github.com/DCapulot
 
 LinkedIn:
 https://www.linkedin.com/in/david-capulot-corrêa-7865bb2a4/
